@@ -1,1 +1,2 @@
-Chef vsphere pipeline
+Jenkins create node pipeline
+
