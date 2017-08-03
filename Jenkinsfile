@@ -14,7 +14,7 @@ node('master') {
         def ssh_user            = 'root'
         def ssh_pwd             = 'Password1'
         def agent_name          = 'chefAutoMat231'
-        def agent_description   = 'jenkins node'
+        def agent_description   = 'jenkins_node'
         def install_location    =  '/var/jenkins'
         def executor_count      = '1'
         def slave_label         = 'test-slave-label'
@@ -25,7 +25,7 @@ node('master') {
                                    import hudson.slaves.*
                                    import hudson.plugins.sshslaves.*
                                    Slave slave = new DumbSlave(
-                                                        ${agent_name},
+                                                        \"${agent_name}\",
                                                         ${agent_description},
                                                         ${install_location},
                                                         ${executor_count},
