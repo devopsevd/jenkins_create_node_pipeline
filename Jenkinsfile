@@ -19,7 +19,8 @@ node('master') {
         def executor_count      = '1'
         def slave_label         = 'test-slave-label'
 
-        def groovy_script       =   """import jenkins.model.*
+        def groovy_script       =   """ 
+                                   import jenkins.model.*
                                    import hudson.model.*
                                    import hudson.slaves.*
                                    import hudson.plugins.sshslaves.*
