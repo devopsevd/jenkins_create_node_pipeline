@@ -26,12 +26,12 @@ node('master') {
                                    import hudson.plugins.sshslaves.*
                                    Slave slave = new DumbSlave(
                                                         \"${agent_name}\",
-                                                        ${agent_description},
-                                                        ${install_location},
-                                                        ${executor_count},
+                                                        \"${agent_description}\",
+                                                        \"${install_location}\",
+                                                        \"${executor_count}\",
                                                         Node.Mode.NORMAL,
-                                                        ${slave_label},
-                                                        new SSHLauncher(${vm_ip},22,${ssh_user},${ssh_pwd},'','','','',''),
+                                                        \"${slave_label}\",
+                                                        new SSHLauncher(\"${vm_ip}\",22,\"${ssh_user}\",\"${ssh_pwd}\","","","","",""),
                                                         new RetentionStrategy.Always(),
                                                         new LinkedList())
                                     Jenkins.instance.addNode(slave)
