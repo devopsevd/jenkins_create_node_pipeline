@@ -89,7 +89,7 @@ node('master') {
 
             stage('Add node to jenkins'){
                             
-                sh 'curl --data-urlencode  script=$(<./createNode.groovy) -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText'
+                sh 'curl --data-urlencode  script=\\$(<./createNode.groovy) -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText'
 
             }
 
