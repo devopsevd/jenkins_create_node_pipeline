@@ -3,9 +3,9 @@ node('master') {
 
         // modify node_name and ip address fields  //
         // ---------------------------------------//
-        def node_name           = 'chefAutoMat232'
-        def vm_ip               = '10.118.41.232'
-        def agent_name          = 'chefAutoMat232'
+        def node_name           = 'chefAutoMat231'
+        def vm_ip               = '10.118.41.231'
+        def agent_name          = 'chefAutoMat231'
         //---------------------------------------//
 
         def vm_template         = 'CentOsTemplate'
@@ -109,9 +109,9 @@ node('master') {
     }
 
             stage('Create slave entry'){
-                                            
-                sh "curl --data-urlencode  'script=${groovy_script}' -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText"
 
+                 //test                           
+                    sh "curl --data-urlencode  'script=${groovy_script}' -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText"
 
             }
 
