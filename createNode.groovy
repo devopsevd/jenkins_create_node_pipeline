@@ -1,6 +1,7 @@
 import jenkins.model.*
 import hudson.model.*
 import hudson.slaves.*
+import hudson.plugins.sshslaves.*
 
 Slave slave = new DumbSlave(
                     "test-script","test slave description",
