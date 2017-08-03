@@ -38,21 +38,21 @@ node('master') {
                                     """
         dir('chef-repo'){
 
-            stage('Get chef repo'){
+            // stage('Get chef repo'){
                             
-                git 'https://github.com/devopsevd/chef_docker_cookbooks.git'
+            //     git 'https://github.com/devopsevd/chef_docker_cookbooks.git'
 
-            }
+            // }
             
-            stage('Check chef connection'){
+            // stage('Check chef connection'){
                             
-                if (isUnix()) {
-                    sh "knife cookbook list"
-                } else {
-                    //bat(/knife cookbook list/)
-                }
+            //     if (isUnix()) {
+            //         sh "knife cookbook list"
+            //     } else {
+            //         //bat(/knife cookbook list/)
+            //     }
 
-            }    
+            // }    
 
             // stage('Check vCenter connection'){
                             
