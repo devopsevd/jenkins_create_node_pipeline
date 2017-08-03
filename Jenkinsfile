@@ -13,6 +13,7 @@ node('master') {
         def vm_domain           =  'csa.local'
         def ssh_user            = 'root'
         def ssh_pwd             = 'Password1'
+        def agent_name          = 'chefAutoMat231'
 
 
         dir('chef-repo'){
