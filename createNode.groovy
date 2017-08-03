@@ -5,7 +5,7 @@ import hudson.plugins.sshslaves.*
 
 Slave slave = new DumbSlave(
                     "test-script",
-                    "${agent_name}",
+                    "test node",
                     "/var/jenkins",
                     "1",
                     Node.Mode.NORMAL,
