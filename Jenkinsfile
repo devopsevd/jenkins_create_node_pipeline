@@ -88,11 +88,17 @@ node('master') {
             // }
     }
 
-            stage('Add node to jenkins'){
+            stage('Create slave entry'){
                             
                 sh 'curl --data-urlencode  "script=\$(cat createNode.groovy)" -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText'
 
             }
+
+            // stage('Add node to jenkins'){
+                            
+            //      sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
+
+            // }
 
 }
 
