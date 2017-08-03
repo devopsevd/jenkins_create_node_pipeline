@@ -14,8 +14,26 @@ node('master') {
         def ssh_user            = 'root'
         def ssh_pwd             = 'Password1'
         def agent_name          = 'chefAutoMat231'
+        def agent_description   = 'jenkins node'
+        def install_location    =  '/var/jenkins'
+        def executor_count      = '1'
+        def slave_label         = 'test-slave-label'
 
-
+        def groovy_script       = "import jenkins.model.* +
+                                    import hudson.model.* + 
+                                    import hudson.slaves.* +
+                                    import hudson.plugins.sshslaves.* +
+                                    Slave slave = new DumbSlave(
+                                                        ${agent_name},
+                                                        ${agent_description},
+                                                        ${install_location},
+                                                        ${executor_count},
+                                                        Node.Mode.NORMAL,
+                                                        ${slave_label},
+                                                        new SSHLauncher(${vm_ip},22,${ssh_user},${ssh_pwd},'','','','',''),
+                                                        new RetentionStrategy.Always(),
+                                                        new LinkedList())
+                                    Jenkins.instance.addNode(slave)"
         dir('chef-repo'){
 
             // stage('Get chef repo'){
@@ -90,7 +108,7 @@ node('master') {
 
             stage('Create slave entry'){
                             
-                sh 'curl --data-urlencode  "script=\$(cat createNode.groovy)" -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText'
+                //sh 'curl --data-urlencode  "script=\$(cat createNode.groovy)" -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText'
 
             }
 
