@@ -5,7 +5,6 @@ node('master') {
         // ---------------------------------------//
         def node_name           = 'chefAutoMat231'
         def vm_ip               = '10.118.41.231'
-        def agent_name          = 'chefAutoMat231'
         //---------------------------------------//
 
         def vm_template         = 'CentOsTemplate'
@@ -25,7 +24,7 @@ node('master') {
                                    import hudson.slaves.*
                                    import hudson.plugins.sshslaves.*
                                    Slave slave = new DumbSlave(
-                                                        \"${agent_name}\",
+                                                        \"${node_name}\",
                                                         \"${agent_description}\",
                                                         \"${install_location}\",
                                                         \"${executor_count}\",
@@ -108,12 +107,13 @@ node('master') {
             // }
     }
 
-        //     stage('Create slave entry'){
+            stage('Create slave entry'){
 
-        //          //test                           
-        //             sh "curl --data-urlencode  'script=${groovy_script}' -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText"
+                 //test                           
+                //sh "curl --data-urlencode  'script=${groovy_script}' -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText"
+                        sh "curl --user 'admin:Password1' --data-urlencode  'script=${groovy_script}' -X POST http://localhost:8080/scriptText"
 
-        //     }
+            }
 
 }
 
