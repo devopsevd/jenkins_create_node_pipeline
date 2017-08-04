@@ -38,31 +38,31 @@ node('master') {
                                     """
         dir('chef-repo'){
 
-            // stage('Get chef repo'){
+            stage('Get chef repo'){
                             
-            //     git 'https://github.com/devopsevd/chef_docker_cookbooks.git'
+                git 'https://github.com/devopsevd/chef_docker_cookbooks.git'
 
-            // }
+            }
             
-            // stage('Check chef connection'){
+            stage('Check chef connection'){
                             
-            //     if (isUnix()) {
-            //         sh "knife cookbook list"
-            //     } else {
-            //         //bat(/knife cookbook list/)
-            //     }
+                if (isUnix()) {
+                    sh "knife cookbook list"
+                } else {
+                    //bat(/knife cookbook list/)
+                }
 
-            // }    
+            }    
 
-            // stage('Check vCenter connection'){
+            stage('Check vCenter connection'){
                             
-            //     if (isUnix()) {
-            //         sh "knife vsphere template list"
-            //     } else {
-            //         //bat(/knife vsphere template list/)
-            //     }
+                if (isUnix()) {
+                    sh "knife vsphere template list"
+                } else {
+                    //bat(/knife vsphere template list/)
+                }
 
-            // }   
+            }   
 
                 
             // stage('Creat VM') {
@@ -108,12 +108,12 @@ node('master') {
             // }
     }
 
-            stage('Create slave entry'){
+        //     stage('Create slave entry'){
 
-                 //test                           
-                    sh "curl --data-urlencode  'script=${groovy_script}' -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText"
+        //          //test                           
+        //             sh "curl --data-urlencode  'script=${groovy_script}' -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText"
 
-            }
+        //     }
 
 }
 
