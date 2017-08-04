@@ -3,8 +3,8 @@ node('master') {
 
         // modify node_name and ip address fields  //
         // ---------------------------------------//
-        def node_name           = 'chefAutoMat232'
-        def vm_ip               = '10.118.41.232'
+        def node_name           = 'chefAutoMat233'
+        def vm_ip               = '10.118.41.233'
         //---------------------------------------//
 
         def vm_template         = 'CentOsTemplate'
@@ -84,31 +84,31 @@ node('master') {
                 }
 
                 if (isUnix()) {
-                    sh "knife bootstrap ${vm_ip} --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --node-name ${node_name} --sudo --verbose"
+                    //sh "knife bootstrap ${vm_ip} --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --node-name ${node_name} --sudo --verbose"
+                    sh "knife bootstrap ${vm_ip} --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --node-name ${node_name} --sudo --verbose --run-list 'role[aosNexus]'"
                 } else {
                     //bat(/knife bootstrap 10.118.41.247 --ssh-user root --ssh-password Password1 --node-name chefAutoMat247 --sudo --verbose/)
                 }
             }
 
-            stage('Add aos recipe') {    
-                if (isUnix()) {
-                    sh "knife node run_list add ${node_name} 'role[aosNexus]'"
-                } else {
-                    //bat(/knife node run_list add chefAutoMat241 'role[dockerinstall]'/)
-                }
-            }
-            stage('Setup aos containers') {
+        //     stage('Add aos recipe') {    
+        //         if (isUnix()) {
+        //             sh "knife node run_list add ${node_name} 'role[aosNexus]'"
+        //         } else {
+        //             //bat(/knife node run_list add chefAutoMat241 'role[dockerinstall]'/)
+        //         }
+        //     }
+        //     stage('Setup aos containers') {
     
-                if (isUnix()) {
-                    sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
-                } else {
-                    //bat(/knife ssh 'name:chefAutoMat241' 'sudo chef-client' -a ipaddress --ssh-user root --ssh-password Password1 --verbose/)
-                }
-            }
+        //         if (isUnix()) {
+        //             sh "knife ssh 'name:${node_name}' 'sudo chef-client' -a ipaddress --ssh-user ${ssh_user} --ssh-password ${ssh_pwd} --verbose"
+        //         } else {
+        //             //bat(/knife ssh 'name:chefAutoMat241' 'sudo chef-client' -a ipaddress --ssh-user root --ssh-password Password1 --verbose/)
+        //         }
+        //     }
     }
 
-            stage('Create slave entry'){
-
+            stage('Add VM as Jenkins slave'){
                  //test                           
                 //sh "curl --data-urlencode  'script=${groovy_script}' -X POST http://admin:7be803fbaa37ef9ab9455a981c1e19b6@localhost:8080/scriptText"
                         sh "curl --user 'admin:Password1' --data-urlencode  'script=${groovy_script}' -X POST http://localhost:8080/scriptText"
