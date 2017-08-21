@@ -3,8 +3,8 @@ node('master') {
 
         // modify node_name and ip address fields  //
         // ---------------------------------------//
-        def node_name           = 'chefAutoMat226'
-        def vm_ip               = '10.118.41.226'
+        def node_name           = 'chefAutoMat227'
+        def vm_ip               = '10.118.41.227'
         //---------------------------------------//
 
         def vm_template         = 'CentOsTemplate'
